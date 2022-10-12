@@ -1,0 +1,22 @@
+version: "1.0"
+services:
+  main:
+    image: question/main
+    ports: 
+      - 80:80
+    working_dir: /question
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: question
+  mysql:
+    image: question/mysql:v1
+    volumes:
+      - question-mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: question
+
+volumes:
+  question-mysql:

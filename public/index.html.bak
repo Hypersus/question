@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <div>
+
+        <span>Name</span><input type="text" name="name" value="">
+
+    </div>
+
+
+    <div>
+
+        <button id="btn">Confirm</button>
+
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+    <script>
+
+        $('#btn').click(() => {
+
+            //读取表单
+
+            var name = $('input[name=name]').val();
+
+
+            //发送请求
+
+            $.post('/getId',{
+
+                name
+
+            },(data) => {
+
+                if(data == 'ok'){
+
+                    alert('Success');
+
+                }else{
+
+                    alert('Fail, server internal error');
+
+                }
+
+            })
+
+        })
+
+    </script>
+
+</body>
+
+</html>
